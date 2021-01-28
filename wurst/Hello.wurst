@@ -1,5 +1,5 @@
 package Hello
-import ConflagrationObjects
+import CustomAbilities
 
 
 /* Hello and welcome to Wurst!
@@ -16,6 +16,7 @@ init
 	createUnit(players[0], 'hfoo', vec2(0,0), angle(0))..addAbility(SPELL_ID)
 	createUnit(players[0], 'Hblm', vec2(1,0), angle(0))..addAbility(SPELL_ID)
 		..addAbility('AHav')
+		..addAbility(FLAMESTRIKE_ID, 99)
 		..setMaxHP(1220)
 		..setHP(1220.)
 		..setMoveSpeed(3060.)

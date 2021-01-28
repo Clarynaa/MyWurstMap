@@ -1,0 +1,34 @@
+package CustomAbilities
+import public ConflagrationConstants
+import public BuffObjEditing
+import ChannelAbilityPreset
+
+public let SPELL_ID = compiletime(ABIL_ID_GEN.next())
+public let BUFF_OBJ = compiletime(createDummyBuffObject(BUFF_NAME, BUFF_TT,	Icons.bTNFireBolt, Abilities.incinerateBuff, "chest"))
+
+@compiletime function genObj()
+    new ChannelAbilityPreset(SPELL_ID, 4, true)
+        ..setName(SPELL_NAME)
+        ..presetTooltipNormal(lvl -> SPELL_TT_NORMAL)
+        ..presetTooltipNormalExtended(lvl -> SPELL_TT_EXTENDED)
+        ..presetIcon(SPELL_ICON)
+        ..presetButtonPosNormal(0, 0)
+        ..presetManaCost(lvl -> 0)
+        ..presetCooldown(lvl -> 4.)
+        ..presetHotkey("Q")
+        ..presetTargetTypes(Targettype.POINT)
+        ..presetAreaofEffect(lvl -> SPELL_RADIUS)
+        ..presetOption(Option.TARGETIMAGE, true)
+
+public let FLAMESTRIKE_ID = compiletime(ABIL_ID_GEN.next())
+
+@compiletime function gen()
+    new AbilityDefinitionBloodMageFlameStrike(FLAMESTRIKE_ID)
+        ..setLevels(99)
+        ..setName("Ultimate Flame Strike")
+        ..presetMaximumDamage(lvl -> 25. * lvl)
+        ..presetFullDamageDealt(lvl -> 25. * lvl)
+        ..presetHalfDamageDealt(lvl -> 12.5 * lvl)
+        ..presetAreaofEffect(lvl -> 5. * lvl)
+        ..presetTooltipNormal(lvl -> "|cff7BB5F7Ultimate Flame Strike |cffFFCC00[Level]- " + lvl.toString() + "|r")
+        ..presetTooltipNormalExtended(lvl -> "The ultimate flame strike, dealing " + (lvl * 25.).toInt().toString() + " Damage. Level - " + lvl.toString())
