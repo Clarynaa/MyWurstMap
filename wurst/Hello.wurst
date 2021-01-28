@@ -1,0 +1,22 @@
+package Hello
+import ConflagrationObjects
+
+
+/* Hello and welcome to Wurst!
+This is just a demo package. 
+You can modify it to tests things out 
+and then later delete it and create your own, new packages.
+Enjoy WurstScript? Consider starring our repo https://github.com/wurstscript/WurstScript */ 
+init
+	print("Hello World")
+	// Temporary fix for being unable to edit war3map.j and get rid of the default unit
+	// forUnitsAll() u -> 
+	// 	RemoveUnit(u)
+
+	createUnit(players[0], 'hfoo', vec2(0,0), angle(0))..addAbility(SPELL_ID)
+	createUnit(players[0], 'Hblm', vec2(1,0), angle(0))..addAbility(SPELL_ID)
+		..addAbility('AHav')
+		..setMaxHP(1220)
+		..setHP(1220.)
+		..setMoveSpeed(3060.)
+				

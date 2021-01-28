@@ -1,0 +1,26 @@
+package ChatEvents
+import ClosureEvents
+import ClosureForGroups
+import ClosureTimers
+
+init
+    EventListener.add(EVENT_PLAYER_CHAT_FILTER) ->
+        let input = GetEventPlayerChatString()
+        let chatPlayer = GetTriggerPlayer()
+
+        //Add cheat for custom amount of gold
+        if input.startsWith("Give Me Gold")
+            print(input)
+            chatPlayer.addGold(input.substring(13).toInt())
+            print("Adding " + input.substring(13) + " gold")
+        //Add cheat for stas
+        else if input == "Bigstats"
+            print("Granting +30 all stats to all of " + GetPlayerName(chatPlayer) + "'s units")
+            forUnitsOfPlayer(chatPlayer) (unit u) ->
+                u..addStr(30)
+                ..addAgi(30)
+                ..addInt(30)
+                doAfter(5.) ->
+                    u.kill()
+            doAfter(3) -> 
+                print("Cheating is bad.")
