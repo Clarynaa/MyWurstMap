@@ -3,8 +3,6 @@ import ItemObjEditing
 import ObjectIdGenerator
 import Icons
 
-
-
 public constant CUSTOM_ITEM_ID = compiletime(ITEM_ID_GEN.next())
 
 @compiletime function gen()
