@@ -1,5 +1,6 @@
 package Hello
 import CustomAbilities
+import CustomItems
 
 
 /* Hello and welcome to Wurst!
@@ -20,4 +21,5 @@ init
 		..setMaxHP(1220)
 		..setHP(1220.)
 		..setMoveSpeed(3060.)
+		..addItemToSlot(CUSTOM_ITEM_ID, 1)
 				
