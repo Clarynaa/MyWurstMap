@@ -2,6 +2,7 @@ package ChatEvents
 import ClosureEvents
 import ClosureForGroups
 import ClosureTimers
+import DialogBox
 
 init
     EventListener.add(EVENT_PLAYER_CHAT_FILTER) ->
@@ -15,12 +16,24 @@ init
             print("Adding " + input.substring(13) + " gold")
         //Add cheat for stas
         else if input == "Bigstats"
-            print("Granting +30 all stats to all of " + GetPlayerName(chatPlayer) + "'s units")
-            forUnitsOfPlayer(chatPlayer) (unit u) ->
-                u..addStr(30)
-                ..addAgi(30)
-                ..addInt(30)
-                doAfter(5.) ->
-                    u.kill()
-            doAfter(3) -> 
-                print("Cheating is bad.")
+            let dBox = new DialogBox("You want 30 to all stats on every unit?")
+            dBox.addButton("Yes") ->
+                dBox.display(GetTriggerPlayer(), false)
+                let dBoxYes = new DialogBox("Are you sure?")
+                dBoxYes.addButton("Yes") ->
+                    dBoxYes.display(GetTriggerPlayer(), false)
+                    print("Granting +30 all stats to all of " + GetPlayerName(chatPlayer) + "'s units")
+                    forUnitsOfPlayer(GetTriggerPlayer()) (unit u) ->
+                        u..addStr(30)
+                        ..addAgi(30)
+                        ..addInt(30)
+                        doAfter(5.) ->
+                            u.kill()
+                    doAfter(3) -> 
+                        print("Cheating is bad.")
+                dBoxYes.addButton("No", () -> dBoxYes.display(GetTriggerPlayer(), false))
+                dBoxYes.display(chatPlayer, true)
+        
+            dBox.addButton("No", () -> dBox.display(GetTriggerPlayer(), false))
+            dBox.display(chatPlayer, true)
+
