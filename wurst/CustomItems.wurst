@@ -13,6 +13,6 @@ public constant CUSTOM_ITEM_ID = compiletime(ITEM_ID_GEN.next())
         ..setTooltipExtended("Makes units invisible")
         ..setInterfaceIcon(Icons.bTNBrilliance)
         ..setModelUsed("Objects\\InventoryItems\\TreasureChest\\treasurechest.mdx")
-        ..setCanBeDropped(true) // Doesn't seem to work?
-        ..setDroppedWhenCarrierDies(true) // Doesn't seem to work?
+        ..setCanBeDropped(true)
+        ..setDroppedWhenCarrierDies(true)
         ..setActivelyUsed(true)
