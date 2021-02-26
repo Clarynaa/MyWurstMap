@@ -6,11 +6,13 @@ import Icons
 public constant CUSTOM_ITEM_ID = compiletime(ITEM_ID_GEN.next())
 
 @compiletime function gen()
-    new ItemDefinition(CUSTOM_ITEM_ID, 'cstM')
+    new ItemDefinition(CUSTOM_ITEM_ID, 'rat9')
         ..setGoldCost(0)..setLumberCost(0)
-        ..setName("Custom Item")..setDescription("it's an item")
-        ..setTooltipExtended("An item made by yours truly")
+        ..setAbilities("Aivs")
+        ..setName("Rod of Poof")..setDescription("Makes units invisible")
+        ..setTooltipExtended("Makes units invisible")
         ..setInterfaceIcon(Icons.bTNBrilliance)
-        ..setModelUsed("dummy.mdl")
+        ..setModelUsed("Objects\\InventoryItems\\TreasureChest\\treasurechest.mdx")
         ..setCanBeDropped(true) // Doesn't seem to work?
         ..setDroppedWhenCarrierDies(true) // Doesn't seem to work?
+        ..setActivelyUsed(true)
